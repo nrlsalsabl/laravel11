@@ -11,6 +11,8 @@
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.ico') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
     <!-- Library / Plugin Css Build -->
     <link rel="stylesheet" href="{{ asset('admin/css/core/libs.min.css') }}" />
 
@@ -117,10 +119,13 @@
     <script src="{{ asset('admin/js/hope-ui.js') }}" defer></script>
     <script src="{{ asset('admin/fontawesome/js/all.js') }}"></script>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <!-- Flatpickr Script -->
     <script src="{{ asset('admin/vendor/flatpickr/dist/flatpickr.min.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    @yield('script')
     @stack('script')
 
 </body>

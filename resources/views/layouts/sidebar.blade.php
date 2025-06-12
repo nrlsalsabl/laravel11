@@ -34,16 +34,16 @@
             <!--logo End-->
 
 
-
             <h6 class="logo-title">Web Pengaduan</h6>
         </a>
         <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
             <i class="icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.25 12.2744L19.25 12.2744" stroke="currentColor" stroke-width="1.5"
                         stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M10.2998 18.2988L4.2498 12.2748L10.2998 6.24976" stroke="currentColor"
-                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M10.2998 18.2988L4.2498 12.2748L10.2998 6.24976" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
             </i>
         </div>
@@ -59,43 +59,34 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.dashboard') }}">
+                    <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" aria-current="page"
+                        href="{{ route('admin.dashboard') }}">
                         @include('icons.home-icon')
                         <span class="item-name">Dashboard</span>
                     </a>
-                </li> 
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('admin/resident*') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.resident.index') }}">
+                    <a class="nav-link {{ Request::is('admin/resident*') ? 'active' : '' }}" aria-current="page"
+                        href="{{ route('admin.resident.index') }}">
                         @include('icons.user-icon')
                         <span class="item-name">Data Masyarakat</span>
                     </a>
-                </li> 
-                {{-- <li class="nav-item">
-                    <a class="nav-link {{ Request::is('siswa') ? 'active' : '' }}" aria-current="page" href="/siswa">
-                        @include('icons.user-icon')
-                        <span class="item-name">Siswa</span>
-                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('kelas') ? 'active' : '' }}" aria-current="page" href="/kelas">
-                        @include('icons.house-icon')
-                        <span class="item-name">Kelas</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('tahunajaran') ? 'active' : '' }}" aria-current="page" href="/tahunajaran">
-                        @include('icons.date-icon')
-                        <span class="item-name">Tahun Ajaran</span>
-                    </a>
-                    <a class="nav-link {{ Request::is('reftagihan') ? 'active' : '' }}" aria-current="page" href="/reftagihan">
+                    <a class="nav-link {{ Request::is('admin/report-category*') ? 'active' : '' }}" aria-current="page"
+                        href="{{ route('admin.report-category.index') }}">
                         @include('icons.mark-icon')
-                        <span class="item-name">Referensi Tagihan</span>
+                        <span class="item-name">Data Kategori</span>
                     </a>
-                </li> --}}
-               
-                
-                
-                
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('admin/report*') ? 'active' : '' }}" aria-current="page"
+                        href="{{ route('admin.report.index') }}">
+                        @include('icons.bill-icon')
+                        <span class="item-name">Data Laporan</span>
+                    </a>
+                </li>
+
                 <li>
                     <hr class="hr-horizontal">
                 </li>
@@ -106,17 +97,6 @@
                     </a>
                 </li>
 
-{{--                 
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('tagihan') ? 'active' : '' }}" aria-current="page" href="/tagihan">
-                        @include('icons.bill-icon')
-                        <span class="item-name">Tagihan</span>
-                    </a>
-                </li>
-                <li>
-                    <hr class="hr-horizontal">
-                </li> --}}
-                
             </ul>
             <!-- Sidebar Menu End -->
         </div>

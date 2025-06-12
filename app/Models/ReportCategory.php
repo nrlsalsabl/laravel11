@@ -20,4 +20,9 @@ class ReportCategory extends Model
         return $this->hasMany(Report::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
