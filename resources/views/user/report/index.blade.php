@@ -1,33 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Daftar Pengaduan')
 
 @section('content')
-    <h6 class="greeting">Hi, User 👋</h6>
-    <h4 class="home-headline">Laporkan masalahmu dan kami segera atasi itu</h4>
-
-    <div class="d-flex align-items-center justify-content-between gap-4 py-3 overflow-auto" id="category"
-        style="white-space: nowrap;">
-
-        @foreach ($categories as $category)
-            <a href="{{ route('report.index', ['category' => $category->name]) }}" class="category d-inline-block">
-                <div class="icon">
-                    <img src="{{ asset('storage/' . $category->image) }}" alt="icon">
-                </div>
-                <p>{{ $category->name }}</p>
-            </a>
-        @endforeach
-    </div>
-
     <div class="py-3" id="reports">
         <div class="d-flex justify-content-between align-items-center">
-            <h6>Pengaduan terbaru</h6>
+            <p class="text-muted">{{ $reports->count() }} List Pengaduan</p>
 
-            <a href="{{ route('report.index') }}" class="text-primary text-decoration-none show-more">
-                Lihat semua
-            </a>
+            <button class="btn btn-filter" type="button">
+                <i class="fa-solid fa-filter me-2"></i>
+                Filter
+            </button>
 
         </div>
+        <p>
+            @if (request()->category)
+                Kategori {{ request()->category }}
+            @endif
+        </p>
 
         <div class="d-flex flex-column gap-3 mt-3">
             @foreach ($reports as $report)
@@ -35,6 +25,7 @@
                     <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
                             <div class="card-report-image position-relative mb-2">
+
                                 <img src="{{ asset('storage/' . $report->image) }}" alt="">
 
                                 @if ($report->reportStatuses->isEmpty() || $report->reportStatuses->last()->status === 'delivered')
@@ -54,6 +45,7 @@
                                         Selesai
                                     </div>
                                 @endif
+
 
                             </div>
 
@@ -78,7 +70,7 @@
                     </a>
                 </div>
             @endforeach
+
         </div>
-
-
-    @endsection
+    </div>
+@endsection

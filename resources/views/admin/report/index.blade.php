@@ -46,7 +46,6 @@
                                                     width="100">
                                             </td>
                                             <td>
-                                                {{-- Aksi bisa ditambahkan di sini --}}
                                                 <a href="{{ route('admin.report.show', $report->id) }}"
                                                     class="btn btn-sm btn-info">Show</a>
                                                 <a href="{{ route('admin.report.edit', $report->id) }}"
