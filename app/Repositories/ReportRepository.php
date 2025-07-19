@@ -12,6 +12,16 @@ class ReportRepository implements ReportRepositoryInterface
         return Report::with('user')->paginate(10);
     }
 
+    public function getLatestReports()
+    {
+        return Report::latest()->get()->take(5);
+    }
+
+    public function getReportByCode(string $code)
+    {
+        return Report::where('code', $code)->first();
+    }
+
     public function getReportById(int $id)
     {
         return Report::where('id', $id)->first();

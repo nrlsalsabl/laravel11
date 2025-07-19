@@ -62,7 +62,7 @@ class ReportController extends Controller
 
         $this->reportRepository->createReport($data);
 
-        Swal::toast('Data Laporan Berhasil Diupdate', 'success')->timerProgressBar();
+        Swal::toast('Data Laporan Berhasil Ditambahkan', 'success')->timerProgressBar();
 
         return redirect()->route('admin.report.index');
     }

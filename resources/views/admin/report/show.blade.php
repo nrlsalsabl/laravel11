@@ -66,25 +66,25 @@
                                     <td>Kategori Laporan</td>
                                     <td>{{ $report->reportCategory->name }}</td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td>Judul Laporan</td>
                                     <td>{{ $report->title }}</td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td>Deskripsi Laporan</td>
                                     <td>{{ $report->description }}</td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td>Bukti Laporan</td>
                                     <td>
                                         <img src="{{ asset('storage/' . $report->image) }}" alt="image" width="200">
                                     </td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td>Latitude</td>
                                     <td>{{ $report->latitude }}</td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td>Longitude</td>
                                     <td>{{ $report->longitude }}</td>
                                 </tr>
@@ -94,7 +94,7 @@
                                         <div id="map" style="height: 300px"></div>
                                     </td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td>Alamat Laporan</td>
                                     <td>{{ $report->address }}</td>
                                 </tr>
@@ -107,21 +107,89 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+    <div class="card border-0 shadow rounded mb-5">
+        <div class="card-body">
+            <h3>Progress Laporan</h3>
+
+            @if ($success)
+                <div class="alert alert-success">{{ $success }}</div>
+            @endif
+
+            <a href="{{ route('admin.report-status.create', $report->id) }}"
+                class="btn btn-md btn-success mb-3 mt-3">Tambah
+                Progress</a>
+
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Bukti </th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($report->reportStatuses as $status)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    @if ($status->image)
+                                        <img src="{{ asset('storage/' . $status->image) }}" alt="image" width="100">
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td>
+                                    {{ $status->status }}
+                                </td>
+                                <td>
+                                    {{ $status->description }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.report-status.edit', $status->id) }}"
+                                        class="btn btn-sm btn-primary">Edit</a>
+                                    <form action="{{ route('admin.report-status.destroy', $status->id) }}" method="POST"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- Pagination
+            <div class="d-flex justify-content-end mt-2">
+                {{ $reports->links() }}
+            </div> --}}
+
+        </div>
+    </div>
 @endsection
 
 @section('script')
-<script>
-    var mymap = L.map('map').setView([{{ $report->latitude }}, {{ $report->longitude }}], 13);
+    <script>
+        var mymap = L.map('map').setView([{{ $report->latitude }}, {{ $report->longitude }}], 13);
 
-    var marker = L.marker([{{ $report->latitude }}, {{ $report->longitude }}]).addTo(mymap);
+        var marker = L.marker([{{ $report->latitude }}, {{ $report->longitude }}]).addTo(mymap);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-        maxZoom: 18
-    }).addTo(mymap);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            maxZoom: 18
+        }).addTo(mymap);
 
-    marker.bindPopup("<b>Lokasi Laporan</b><br />berada di {{ $report->address }}").openPopup();
-</script>
+        marker.bindPopup("<b>Lokasi Laporan</b><br />berada di {{ $report->address }}").openPopup();
+    </script>
 @endsection
 
 @push('script')
