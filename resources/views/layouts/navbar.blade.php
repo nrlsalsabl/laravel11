@@ -7,8 +7,7 @@
             <!--Logo start-->
             <div class="logo-main">
                 <div class="logo-normal">
-                    <svg class="text-primary icon-30" viewBox="0 0 30 30" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="text-primary icon-30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2"
                             transform="rotate(-45 -0.757324 19.2427)" fill="currentColor" />
                         <rect x="7.72803" y="27.728" width="28" height="4" rx="2"
@@ -48,10 +47,9 @@
                 </svg>
             </i>
         </div>
-         
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
                 <span class="mt-2 navbar-toggler-bar bar1"></span>
                 <span class="navbar-toggler-bar bar2"></span>
@@ -60,7 +58,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
-                 
+
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link" id="notification-drop" data-bs-toggle="dropdown">
                         <svg class="icon-24" width="24" viewBox="0 0 24 24" fill="none"
@@ -74,8 +72,7 @@
                         </svg>
                         <span class="bg-danger dots"></span>
                     </a>
-                    <div class="p-0 sub-drop dropdown-menu dropdown-menu-end"
-                        aria-labelledby="notification-drop">
+                    <div class="p-0 sub-drop dropdown-menu dropdown-menu-end" aria-labelledby="notification-drop">
                         <div class="m-0 shadow-none card">
                             <div class="py-3 card-header d-flex justify-content-between bg-primary">
                                 <div class="header-title">
@@ -141,7 +138,7 @@
                         </div>
                     </div>
                 </li>
-                
+
                 <li class="nav-item dropdown">
                     <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -163,18 +160,18 @@
                             {{-- <p class="mb-0 caption-sub-title">Marketing Administrator</p> --}}
                         </div>
                     </a>
-                    
+
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
                             <a class="dropdown-item" href="#"
-                            onclick="event.preventDefault();
+                                onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-    
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
 
                         </li>
                     </ul>

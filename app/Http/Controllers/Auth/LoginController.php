@@ -31,6 +31,8 @@ class LoginController extends Controller
             if (FacadesAuth::user()->hasRole('admin')) {
                 return redirect()->route('admin.dashboard');
             }
+
+            return redirect()->route('home');
         }
 
         // dd("Login sebagai user berhasil");

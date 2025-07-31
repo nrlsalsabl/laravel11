@@ -40,6 +40,19 @@
                 <div class="col-md-12">
                     <div class="row justify-content-center">
                         <div class="col-md-5">
+
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible d-flex align-items-center"
+                                    role="alert" style="background-color: #e6f9e6; border-color: #b2e2b2;">
+                                    <i class="fas fa-check-circle me-2" style="color: #28a745;"></i>
+                                    <div>
+                                        {{ session('success') }}
+                                    </div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
                             <form method="POST" action="{{ route('login.store') }}">
                                 @csrf
 
@@ -87,8 +100,13 @@
                                             </div>
 
                                         </div>
-                                        <div class="d-flex justify-content-center">
+                                        <div class="d-flex justify-content-right">
                                             <button type="submit" class="btn btn-primary">Sign In</button>
+                                        </div><br>
+
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <a href="{{ route('register') }}"
+                                                class="text-decoration-none text-primary">Belum Punya Akun?</a>
                                         </div>
                                     </div>
                                 </div>

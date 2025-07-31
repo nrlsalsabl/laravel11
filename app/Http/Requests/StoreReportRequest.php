@@ -18,7 +18,7 @@ class StoreReportRequest extends FormRequest
             'report_category_id' => 'required|exists:report_categories,id',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|file',
+            'image' => 'nullable|file',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
             'address' => 'required|string',
