@@ -5,6 +5,8 @@ namespace App\Repositories;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Models\Report;
 use App\Models\ReportCategory;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class ReportRepository implements ReportRepositoryInterface
 {
@@ -23,6 +25,21 @@ class ReportRepository implements ReportRepositoryInterface
         return Report::where('code', $code)->first();
     }
 
+    // ReportRepository.php
+    public function getReportsByResidentId(string $status)
+    {
+        return Report::where('resident_id', FacadesAuth::user()->resident->id)
+            ->whereHas('reportStatuses', function ($query) use ($status) {
+                $query->where('status', $status)
+                    ->whereIn('id', function ($subQuery) {
+                        $subQuery->selectRaw('MAX(id)')
+                            ->from('report_statuses')
+                            ->groupBy('report_id');
+                    });
+            })->with('reportStatuses')->latest()->get();
+    }
+
+
     public function getReportsByCategory(string $category)
     {
         $category = ReportCategory::where('name', $category)->first();
@@ -37,7 +54,7 @@ class ReportRepository implements ReportRepositoryInterface
 
     public function createReport(array $data)
     {
-        
+
         $report = Report::create($data);
 
         $report->reportStatuses()->create([

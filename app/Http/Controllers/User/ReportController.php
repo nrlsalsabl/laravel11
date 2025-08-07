@@ -32,6 +32,15 @@ class ReportController extends Controller
         return view('user.report.index', compact('reports'));
     }
 
+    public function myReport(Request $request)
+    {
+        $status = $request->input('status', 'delivered');
+
+        $reports = $this->reportRepository->getReportsByResidentId($status);
+
+        return view('user.report.my-report', compact('reports'));
+    }
+
     public function show($code)
     {
         $report = $this->reportRepository->getReportByCode($code);
